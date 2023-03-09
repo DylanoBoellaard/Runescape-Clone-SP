@@ -1,0 +1,5 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+ArtifactDB filter=lfs diff=lfs merge=lfs -text
+ProjectLibraryArtifactDB filter=lfs diff=lfs merge=lfs -text
+C:UnityProjectsPersonal filter=lfs diff=lfs merge=lfs -text
