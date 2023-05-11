@@ -9,22 +9,32 @@ public class LevelSystem
     public event EventHandler OnExperienceChanged;
     public event EventHandler OnLevelChanged;
 
-    private static readonly int[] experiencePerLevel = new[] { 100, 150, 200, 250, 300, 375, 450, 575, 650, 725 };
+
+    // Level variables and stuff
+    private const int maxLevel = 100;
+    private const int baseExperience = 100;
+    private const float experienceMultiplier = 1.1f;
+
+    private int[] experiencePerLevel = new int[maxLevel];
     private int level;
     private int currentExperience;
 
     public LevelSystem()
     {
+        for (int level = 0; level < maxLevel; level++)
+        {
+            experiencePerLevel[level] = Mathf.RoundToInt(baseExperience * Mathf.Pow(experienceMultiplier, level));
+        }
         level = 0;
         currentExperience = 0;
     }
 
     public void AddExperience(int amount)
     {
-        if (!IsMaxLevel())
+        if (level < maxLevel)
         {
             currentExperience += amount;
-            while (!IsMaxLevel() && currentExperience >= GetExperienceToNextLevel(level))
+            while (level < maxLevel && currentExperience >= GetExperienceToNextLevel(level)) // Change GetExperiencetoNextLevel(level) to experiencePerLeve;[level] ?
             {
                 // If enough experience to level up, level it up
                 currentExperience -= GetExperienceToNextLevel(level);
@@ -42,7 +52,7 @@ public class LevelSystem
 
     public float GetExperienceNormalized()
     {
-        if (IsMaxLevel())
+        if (level >= maxLevel)
         {
             return 1f;
         }
@@ -59,7 +69,7 @@ public class LevelSystem
 
     public int GetExperienceToNextLevel(int level)
     {
-        if (level < experiencePerLevel.Length)
+        if (level < maxLevel)
         {
             return experiencePerLevel[level];
         }
