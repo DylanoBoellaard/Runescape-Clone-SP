@@ -11,7 +11,7 @@ public class CameraZoomControlNEWINPUT : MonoBehaviour
     [SerializeField] private CinemachineFreeLook freeLookCameraToZoom;  // Used to get the freelook camera component
     [SerializeField] private float zoomSpeed = 1f;                      // The zoom speed
     [SerializeField] private float zoomAcceleration = 2.5f;             // For smooth zoomin in or out
-    [SerializeField] private float zoomInnerRange = 3;                  // Max to zoom in
+    [SerializeField] private float zoomInnerRange = 2;                  // Max to zoom in
     [SerializeField] private float zoomOuterRange = 50;                 // Max to zoom out
 
     private float currentMiddleRigRadius = 5f;  // Is the same as Topdown Cam > orbits > MiddleRig
@@ -67,7 +67,7 @@ public class CameraZoomControlNEWINPUT : MonoBehaviour
         currentMiddleRigRadius = Mathf.Clamp(currentMiddleRigRadius, zoomInnerRange, zoomOuterRange);
 
         // Selects camera and changes the Radius of the top rig orbit to currentMiddleRigradius
-        freeLookCameraToZoom.m_Orbits[1].m_Radius = currentMiddleRigRadius;
+        //freeLookCameraToZoom.m_Orbits[1].m_Radius = currentMiddleRigRadius;
 
         // Sets height of middle rig orbit [0] and bottom rig orbit [2] to the orbit radius of [1]
         freeLookCameraToZoom.m_Orbits[0].m_Height = freeLookCameraToZoom.m_Orbits[1].m_Radius;

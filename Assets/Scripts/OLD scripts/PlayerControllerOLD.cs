@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerOLD : MonoBehaviour
 {
     // Allow full control for the player (up, down, left, right)
 
@@ -30,10 +30,5 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(0, 2, 0);
         }
-    }
-
-    void PlayerMovement()
-    {
-        
     }
 }
