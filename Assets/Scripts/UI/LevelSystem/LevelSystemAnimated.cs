@@ -16,6 +16,7 @@ public class LevelSystemAnimated
 
     private int level;
     private int currentExperience;
+    private int animationExperience;
 
     public LevelSystemAnimated(LevelSystem levelSystem)
     {
@@ -66,7 +67,7 @@ public class LevelSystemAnimated
         if (level < levelSystem.GetLevelNumber())
         {
             // Local level under target level
-            AddExperience();
+            AddExperience(); // Change this for faster animating bar https://youtu.be/kKCLMvsgAR0?t=1517
         }
         else
         {
@@ -84,7 +85,13 @@ public class LevelSystemAnimated
 
     private void AddExperience()
     {
-        currentExperience++;
+        //currentExperience++; OLD ANIMATED XP BAR
+
+        int experienceToNextLevel = levelSystem.GetExperienceToNextLevel(level);
+        float experienceToAdd = experienceToNextLevel * 0.01f; // Adjust this value to change the animation speed
+
+        currentExperience += Mathf.RoundToInt(experienceToAdd);
+
         if (currentExperience >= levelSystem.GetExperienceToNextLevel(level))
         {
             level++;

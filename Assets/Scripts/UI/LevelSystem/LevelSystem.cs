@@ -33,8 +33,8 @@ public class LevelSystem
     {
         if (level < maxLevel)
         {
-            currentExperience += amount;
-            while (level < maxLevel && currentExperience >= GetExperienceToNextLevel(level)) // Change GetExperiencetoNextLevel(level) to experiencePerLeve;[level] ?
+            currentExperience += amount; // TO DO: Show currentExperience on XP bar
+            while (level < maxLevel && currentExperience >= GetExperienceToNextLevel(level)) // Change GetExperiencetoNextLevel(level) to experiencePerLevel;[level] ?
             {
                 // If enough experience to level up, level it up
                 currentExperience -= GetExperienceToNextLevel(level);

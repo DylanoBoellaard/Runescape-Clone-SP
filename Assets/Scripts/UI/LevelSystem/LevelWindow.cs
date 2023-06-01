@@ -20,6 +20,7 @@ public class LevelWindow : MonoBehaviour
         transform.Find("ExperienceButton5").GetComponent<Button>().onClick.AddListener(() => levelSystem.AddExperience(5));
         transform.Find("ExperienceButton50").GetComponent<Button>().onClick.AddListener(() => levelSystem.AddExperience(50));
         transform.Find("ExperienceButton500").GetComponent<Button>().onClick.AddListener(() => levelSystem.AddExperience(500));
+        transform.Find("ExperienceButtonCustom").GetComponent<Button>().onClick.AddListener(() => levelSystem.AddExperience(5000));
     }
 
     private void SetExperienceBarSize(float experienceNormalized)
@@ -29,7 +30,8 @@ public class LevelWindow : MonoBehaviour
 
     private void SetLevelNumber(int levelNumber)
     {
-        LevelText.text = "Level\n" + (levelNumber + 1);
+        if(LevelText!= null)
+            LevelText.text = "Level\n" + (levelNumber + 1);
     }
 
     public void SetLevelSystem(LevelSystem levelsystem)

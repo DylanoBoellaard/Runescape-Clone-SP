@@ -10,7 +10,7 @@ public class Ore : MonoBehaviour, IInteractable
     // LevelSystem to gain XP
     private LevelSystem levelSystem;
 
-    // interactor can be used as a check. So an inventory check to see if you have the key for the door
+    // interactor can be used as a check. So an inventory check to see if you have the key for a door
     public bool Interact(Interactor interactor)
     {
         // Do something with the tree
